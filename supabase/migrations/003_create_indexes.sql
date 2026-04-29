@@ -1,0 +1,14 @@
+CREATE INDEX idx_campaigns_user_status ON campaigns(user_id, status);
+CREATE INDEX idx_campaigns_platform_status ON campaigns(platform, status) WHERE status = 'active';
+CREATE INDEX idx_tasks_campaign ON tasks(campaign_id);
+CREATE INDEX idx_tasks_active ON tasks(is_active) WHERE is_active = TRUE;
+CREATE INDEX idx_completions_user ON completions(user_id, created_at DESC);
+CREATE INDEX idx_completions_task_status ON completions(task_id, status);
+CREATE INDEX idx_completions_campaign ON completions(campaign_id, created_at DESC);
+CREATE INDEX idx_credit_tx_user ON credit_transactions(user_id, created_at DESC);
+CREATE INDEX idx_events_user ON events(user_id, created_at DESC);
+CREATE INDEX idx_abuse_user ON abuse_flags(user_id, status);
+CREATE INDEX idx_user_actions_user ON user_actions(user_id, created_at DESC);
+CREATE INDEX idx_profiles_trust ON profiles(trust_score);
+CREATE INDEX idx_profiles_linkedin ON profiles(linkedin_url) WHERE linkedin_url IS NOT NULL;
+CREATE UNIQUE INDEX idx_completions_user_task ON completions(user_id, task_id);

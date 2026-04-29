@@ -1,0 +1,2 @@
+-- Seed data for development
+-- This file is run by `supabase db reset`
